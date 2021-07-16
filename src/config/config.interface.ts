@@ -1,2 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface EnvironmentVariables {}
+export interface EnvironmentVariables {
+  MONGODB_URI: string;
+}
