@@ -26,7 +26,7 @@ ex: ## 1.5.4 - 2021-02-15
 
 ### Added
 
-- Add mongoose connection
+- Add config module
 
 ### Changed
 
