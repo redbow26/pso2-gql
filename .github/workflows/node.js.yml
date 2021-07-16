@@ -1,0 +1,103 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - feature/*
+      - develop
+      - master
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+
+  prepare-dependencies:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+
+  vulnerability:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: vulnerabilities
+        run: npm audit
+        continue-on-error: true
+
+  lint:
+    runs-on: ubuntu-latest
+
+    needs: prepare-dependencies
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - name: lint
+        run: npm run lint
+        continue-on-error: true
+
+  e2e-tests:
+    runs-on: ubuntu-latest
+
+    needs: prepare-dependencies
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - name: run test
+        run: npm run test:e2e
+
+  units-tests:
+    runs-on: ubuntu-latest
+
+    needs: prepare-dependencies
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - name: run test
+        run: npm run test:cov
