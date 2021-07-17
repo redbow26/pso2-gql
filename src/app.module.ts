@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { HelloModule } from './hello/hello.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -20,7 +19,6 @@ import { MongooseModule } from '@nestjs/mongoose';
       }),
       inject: [ConfigService],
     }),
-    HelloModule,
   ],
 })
 export class AppModule {}
