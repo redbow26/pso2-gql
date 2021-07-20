@@ -2,6 +2,280 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Armor {
+  """id"""
+  _id: String
+
+  """resistance maximal"""
+  resistanceMax: Int!
+
+  """resistance minimal"""
+  resistanceMin: Int!
+
+  """wearable"""
+  wearable: Wearable!
+}
+
+input CreateArmorInput {
+  """resistance maximal"""
+  resistanceMax: Int!
+
+  """resistance minimal"""
+  resistanceMin: Int!
+
+  """wearable"""
+  wearable: CreateWearableInput!
+}
+
+input CreateItemInput {
+  """Item loot table"""
+  lootTable: [CreateLootInput!]
+
+  """Item name"""
+  name: String!
+
+  """Item rarity"""
+  rarity: Int!
+}
+
+input CreateLootInput {
+  """Loot description"""
+  description: String!
+}
+
+input CreatePotencyInput {
+  """melee potency"""
+  melee: Int
+
+  """ranged potency"""
+  ranged: Int
+
+  """technique potency"""
+  technique: Int
+}
+
+input CreateResistanceInput {
+  """blind resistance"""
+  blind: Int
+
+  """burn resistance"""
+  burn: Int
+
+  """damage resistance"""
+  damage: Int
+
+  """freeze resistance"""
+  freeze: Int
+
+  """pain resistance"""
+  pain: Int
+
+  """panic resistance"""
+  panic: Int
+
+  """poison resistance"""
+  poison: Int
+
+  """shock resistance"""
+  shock: Int
+}
+
+input CreateStatInput {
+  """hp stats"""
+  hp: Int
+
+  """potency"""
+  potency: CreatePotencyInput
+
+  """pp stats"""
+  pp: Int
+
+  """resistance"""
+  resistance: CreateResistanceInput
+}
+
+input CreateWearableInput {
+  """wear condition"""
+  condition: String
+
+  """item"""
+  item: CreateItemInput!
+
+  """stat"""
+  stat: CreateStatInput
+}
+
+type Item {
+  """Loot table for this object"""
+  lootTable: [Loot!]!
+
+  """name of this item"""
+  name: String!
+
+  """Rarity of this item"""
+  rarity: Int!
+}
+
+type Loot {
+  """Loot description"""
+  description: String!
+}
+
+type Mutation {
+  createArmor(createArmorInput: CreateArmorInput!): Armor!
+  removeArmor(id: String!): Armor!
+  updateArmor(updateArmorInput: UpdateArmorInput!): Armor!
+}
+
+type Potency {
+  """melee potency"""
+  melee: Int!
+
+  """ranged potency"""
+  ranged: Int!
+
+  """technique potency"""
+  technique: Int!
+}
+
 type Query {
-  hello: String!
+  armor(id: String!): Armor!
+  armors: [Armor!]!
+}
+
+type Resistance {
+  """blind resistance"""
+  blind: Int!
+
+  """burn resistance"""
+  burn: Int!
+
+  """damage resistance"""
+  damage: Int!
+
+  """freeze resistance"""
+  freeze: Int!
+
+  """pain resistance"""
+  pain: Int!
+
+  """panic resistance"""
+  panic: Int!
+
+  """poison resistance"""
+  poison: Int!
+
+  """shock resistance"""
+  shock: Int!
+}
+
+type Stat {
+  """hp stats"""
+  hp: Int!
+
+  """potency"""
+  potency: Potency!
+
+  """pp stats"""
+  pp: Int!
+
+  """resistance"""
+  resistance: Resistance!
+}
+
+input UpdateArmorInput {
+  id: String!
+
+  """resistance maximal"""
+  resistanceMax: Int
+
+  """resistance minimal"""
+  resistanceMin: Int
+
+  """wearable"""
+  wearable: UpdateWearableInput!
+}
+
+input UpdateItemInput {
+  """Item loot table"""
+  lootTable: [CreateLootInput!]
+
+  """Item name"""
+  name: String
+
+  """Item rarity"""
+  rarity: Int
+}
+
+input UpdatePotencyInput {
+  """melee potency"""
+  melee: Int
+
+  """ranged potency"""
+  ranged: Int
+
+  """technique potency"""
+  technique: Int
+}
+
+input UpdateResistanceInput {
+  """blind resistance"""
+  blind: Int
+
+  """burn resistance"""
+  burn: Int
+
+  """damage resistance"""
+  damage: Int
+
+  """freeze resistance"""
+  freeze: Int
+
+  """pain resistance"""
+  pain: Int
+
+  """panic resistance"""
+  panic: Int
+
+  """poison resistance"""
+  poison: Int
+
+  """shock resistance"""
+  shock: Int
+}
+
+input UpdateStatInput {
+  """hp stats"""
+  hp: Int
+
+  """potency"""
+  potency: UpdatePotencyInput
+
+  """pp stats"""
+  pp: Int
+
+  """resistance"""
+  resistance: UpdateResistanceInput
+}
+
+input UpdateWearableInput {
+  """wear condition"""
+  condition: String
+
+  """item"""
+  item: UpdateItemInput
+
+  """stat"""
+  stat: UpdateStatInput
+}
+
+type Wearable {
+  """wear condition"""
+  condition: String
+
+  """item"""
+  item: Item!
+
+  """stat"""
+  stat: Stat!
 }

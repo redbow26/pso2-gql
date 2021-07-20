@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ArmorsModule } from './armors/armors.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       }),
       inject: [ConfigService],
     }),
+    ArmorsModule,
   ],
 })
 export class AppModule {}
