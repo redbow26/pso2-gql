@@ -9,6 +9,9 @@ export class Item {
   @Field(() => Int, { description: 'Rarity of this item' })
   rarity: number;
 
-  @Field(() => [Loot], { description: 'Loot table for this object' })
+  @Field(() => [Loot], {
+    description: 'Loot table for this object',
+    defaultValue: [],
+  })
   lootTable: Loot[];
 }

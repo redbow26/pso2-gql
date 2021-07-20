@@ -3,12 +3,12 @@ import { Item } from '../../items/schemas/item.schema';
 import { Stat } from '../../stats/schemas/stat.schema';
 
 export class Wearable {
-  @Prop({ type: Item })
+  @Prop({ type: Item, required: true })
   item: Item;
 
-  @Prop({ type: Stat })
+  @Prop({ type: Stat, required: true })
   stat: Stat;
 
-  @Prop()
-  condition: string;
+  @Prop({ required: false })
+  condition?: string;
 }

@@ -7,9 +7,9 @@ import { UpdateStatInput } from '../../stats/dto/update-stat.input';
 export class UpdateWearableInput extends PartialType(
   OmitType(CreateWearableInput, ['item', 'stat'] as const),
 ) {
-  @Field(() => UpdateItemInput, { description: 'item' })
-  item: UpdateItemInput;
+  @Field(() => UpdateItemInput, { description: 'item', nullable: true })
+  item?: UpdateItemInput;
 
-  @Field(() => UpdateStatInput, { description: 'stat' })
-  stat: UpdateStatInput;
+  @Field(() => UpdateStatInput, { description: 'stat', nullable: true })
+  stat?: UpdateStatInput;
 }

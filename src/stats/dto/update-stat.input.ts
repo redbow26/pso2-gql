@@ -7,9 +7,12 @@ import { UpdateResistanceInput } from '../../resistances/dto/update-resistance.i
 export class UpdateStatInput extends PartialType(
   OmitType(CreateStatInput, ['potency', 'resistance'] as const),
 ) {
-  @Field(() => UpdatePotencyInput, { description: 'potency' })
-  potency: UpdatePotencyInput;
+  @Field(() => UpdatePotencyInput, { description: 'potency', nullable: true })
+  potency?: UpdatePotencyInput;
 
-  @Field(() => UpdateResistanceInput, { description: 'resistance' })
-  resistance: UpdateResistanceInput;
+  @Field(() => UpdateResistanceInput, {
+    description: 'resistance',
+    nullable: true,
+  })
+  resistance?: UpdateResistanceInput;
 }

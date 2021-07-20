@@ -4,13 +4,13 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class Armor extends Document {
-  @Prop({ type: Wearable })
+  @Prop({ type: Wearable, required: true })
   wearable: Wearable;
 
-  @Prop()
+  @Prop({ required: true })
   resistanceMin: number;
 
-  @Prop()
+  @Prop({ required: true })
   resistanceMax: number;
 }
 

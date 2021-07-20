@@ -1,6 +1,6 @@
 import { Prop } from '@nestjs/mongoose';
 
 export class Loot {
-  @Prop()
+  @Prop({ required: true })
   description: string;
 }

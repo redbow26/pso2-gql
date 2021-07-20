@@ -4,15 +4,21 @@ import { CreateResistanceInput } from '../../resistances/dto/create-resistance.i
 
 @InputType()
 export class CreateStatInput {
-  @Field(() => Int, { description: 'hp stats' })
-  hp: number;
+  @Field(() => Int, { description: 'hp stats', nullable: true })
+  hp?: number;
 
-  @Field(() => Int, { description: 'pp stats' })
-  pp: number;
+  @Field(() => Int, { description: 'pp stats', nullable: true })
+  pp?: number;
 
-  @Field(() => CreatePotencyInput, { description: 'potency' })
-  potency: CreatePotencyInput;
+  @Field(() => CreatePotencyInput, {
+    description: 'potency',
+    nullable: true,
+  })
+  potency?: CreatePotencyInput;
 
-  @Field(() => CreateResistanceInput, { description: 'resistance' })
-  resistance: CreateResistanceInput;
+  @Field(() => CreateResistanceInput, {
+    description: 'resistance',
+    nullable: true,
+  })
+  resistance?: CreateResistanceInput;
 }

@@ -1,27 +1,27 @@
 import { Prop } from '@nestjs/mongoose';
 
 export class Resistance {
-  @Prop()
+  @Prop({ default: 0 })
   damage: number;
 
-  @Prop()
+  @Prop({ default: 0 })
   burn: number;
 
-  @Prop()
+  @Prop({ default: 0 })
   freeze: number;
 
-  @Prop()
+  @Prop({ default: 0 })
   shock: number;
 
-  @Prop()
+  @Prop({ default: 0 })
   blind: number;
 
-  @Prop()
+  @Prop({ default: 0 })
   panic: number;
 
-  @Prop()
+  @Prop({ default: 0 })
   poison: number;
 
-  @Prop()
+  @Prop({ default: 0 })
   pain: number;
 }

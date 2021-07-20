@@ -2,12 +2,12 @@ import { Prop } from '@nestjs/mongoose';
 import { Loot } from '../../loots/schemas/loot.schema';
 
 export class Item {
-  @Prop()
+  @Prop({ required: true })
   name: string;
 
-  @Prop()
+  @Prop({ required: true })
   rarity: number;
 
-  @Prop({ type: [Loot] })
+  @Prop({ type: [Loot], default: [] })
   lootTable: Loot[];
 }

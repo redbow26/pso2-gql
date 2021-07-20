@@ -7,9 +7,9 @@ export class CreateWearableInput {
   @Field(() => CreateItemInput, { description: 'item' })
   item: CreateItemInput;
 
-  @Field(() => CreateStatInput, { description: 'stat' })
-  stat: CreateStatInput;
+  @Field(() => CreateStatInput, { description: 'stat', nullable: true })
+  stat?: CreateStatInput;
 
-  @Field({ description: 'wear condition' })
-  condition: string;
+  @Field({ description: 'wear condition', nullable: true })
+  condition?: string;
 }

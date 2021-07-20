@@ -4,15 +4,15 @@ import { Resistance } from '../../resistances/entities/resistance.entity';
 
 @ObjectType()
 export class Stat {
-  @Field(() => Int, { description: 'hp stats' })
-  hp: number;
+  @Field(() => Int, { description: 'hp stats', defaultValue: 0 })
+  hp?: number;
 
-  @Field(() => Int, { description: 'pp stats' })
-  pp: number;
+  @Field(() => Int, { description: 'pp stats', defaultValue: 0 })
+  pp?: number;
 
-  @Field(() => Potency, { description: 'potency' })
-  potency: Potency;
+  @Field(() => Potency, { description: 'potency', defaultValue: {} })
+  potency?: Potency;
 
-  @Field(() => Resistance, { description: 'resistance' })
-  resistance: Resistance;
+  @Field(() => Resistance, { description: 'resistance', defaultValue: {} })
+  resistance?: Resistance;
 }
